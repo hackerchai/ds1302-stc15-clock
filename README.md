@@ -16,7 +16,7 @@
 ## 详细教程
   参见作者博客文章[DS1302温度时钟DIY](https://blog.hackerchai.com/ds1302-ds18b20-stc15-clock/)。
 ## 关于作者
-主要代码贡献者：[柴轶晟](https://hackerchai.com) （hackerchaicom@gmail.com）
+主要代码贡献者：[柴轶晟](https://hackerchai.com) （hackerchai.com@gmail.com）
 
 参与开发：沈冠霖 王荣
 
