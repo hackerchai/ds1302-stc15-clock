@@ -9,7 +9,17 @@
 
 ![back](https://blog.hackerchai.com/wp-content/uploads/2016/08/DSC_0087-min.jpg)
 
-#功能
+## 文件说明
+
+  circuit/clock.pcb  电路图
+
+  circuit/clockpt.pcb  铺铜后电路图
+
+  head-file/  头文件引用
+
+  mian-code/  主要逻辑代码
+
+## 功能
   提供时钟显示，修改，以及温度显示功能。
 ## 制作教程
   PCB电路图请在仓库内自行下载，印刷后按照引脚焊接元件，下载[宏晶科技](http://www.stcmcu.com/)官网所提供的相关烧录软件与教程，配合板载串口与USB-TTL烧录器进行编程。
