@@ -11,9 +11,9 @@
 
 ## 文件说明
 
-  circuit/clock.pcb  电路图
+  circuit-diagram/clock.pcb  电路图
 
-  circuit/clockpt.pcb  铺铜后电路图
+  circuit-diagram/clockpt.pcb  铺铜后电路图
 
   head-file/  头文件引用
 
