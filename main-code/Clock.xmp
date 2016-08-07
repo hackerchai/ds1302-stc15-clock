@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="Windows-1252" ?>
+<TKStudioProject Name="CLOCK" BuildTool="0" Version="3.00" Author="YinHandong[Òüº®¶¬]">
+    <Files>
+        <Filter Name="Source Code">
+            <File RelativePath="main.c">
+                <Header RelativePath="STC15W402AS.H" />
+                <Header RelativePath="C:\KEIL\C51\INC\INTRINS.H" />
+                <Header RelativePath="DEFINECONTROL.H" />
+                <Header RelativePath="DS1302.H" />
+                <Header RelativePath="C:\KEIL\C51\INC\STDIO.H" />
+            </File>
+        </Filter>
+    </Files>
+    <Configurations>
+        <Configuration Name="Standard" CodeMode="2" MemMode="0" RTOS="0" T51FL="0" SIMCLK="33.000000" OCM51="" OCR51="" OutputDirectory=".\Standard\" OutputName="CSAMPLE" GENAPP="1" GENLIB="0" ListingDirectory=".\Standard\" OPTLT="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" OPTDBG="1,-1,1,1,1,0,()" DEVICE="80C51FA" VENDOR="NXP (founded by Philips)" FAMINY="0" CPU="" RGF="" MONDL="" SIMDL="">
+            <Tool Name="C51Tool" C51FL="4853008" C51VA="0" C51DEF="" C51UDF="" C51MSC="" INCC5="" />
+            <Tool Name="A51Tool" A51FL="68" A51SET="" A51RST="" A51MSC="" INCA5="" />
+            <Tool Name="Lx51Tool" LX51FL="4" LX51COB="" LX51XDB="" LX51PDB="" LX51BIB="" LX51DAB="" LX51IDB="" LX51PRC="" LX51STK="" LX51COS="" LX51XDS="" LX51BIS="" LX51DAS="" LX51IDS="" LX51OVL="" LX51MSC="" LX51DWN="" />
+            <DeviceProperties Item0='MON=S8051.DLL TP51.DLL(&quot;-p51R&quot;)' Item1='BOOK0=DATASHTS\PHILIPS\P51_PG.PDF(&quot;80C51 Family Programmer&apos;s Guide&quot;)' Item2='BOOK1=DATASHTS\PHILIPS\8XC5X_FX_RX_DS.PDF(&quot;Data Sheet&quot;)' Item3="CPU=IRAM(0-0xFF) CLOCK(33000000) MODP2" Item4='REGFILE=REG51F.H(&quot;Philips&quot;)' Item5='SFILE=&quot;LIB\STARTUP.A51&quot; (&quot;Standard 8051 Startup Code&quot;)' Item6='SIM=S8051.DLL DP51.DLL(&quot;-p51R&quot;)' />
+            <DeviceDescription Description="8051 based CMOS controller with Dual DPTR, 32 I/O Lines,&#x0D;&#x0A;PCA, 3 Timers/Counters, 7 Interrupts/4 Priority Levels,&#x0D;&#x0A;ROM-Less, 256 Bytes on-chip RAM" />
+        </Configuration>
+        <Configuration Name="Debug" CodeMode="2" MemMode="0" RTOS="0" T51FL="0" SIMCLK="33.000000" OCM51="" OCR51="" CodeBank="" OutputDirectory=".\Debug\" OutputName="Clock" GENAPP="1" GENLIB="0" ListingDirectory=".\Debug\" OPTLT="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" OPTDBG="1,-1,1,1,1,0,()" DEVICE="80C51FA" VENDOR="NXP (founded by Philips)" FAMINY="0">
+            <Tool Name="C51Tool" C51FL="4853008" C51VA="0" C51DEF="" C51UDF="" C51MSC="" INCC5="" />
+            <Tool Name="A51Tool" A51FL="68" A51SET="" A51RST="" A51MSC="" INCA5="" />
+            <Tool Name="Lx51Tool" LX51FL="4" LX51COB="" LX51XDB="" LX51PDB="" LX51BIB="" LX51DAB="" LX51IDB="" LX51PRC="" LX51STK="" LX51COS="" LX51XDS="" LX51BIS="" LX51DAS="" LX51IDS="" LX51OVL="" LX51MSC="" LX51DWN="" />
+            <DeviceProperties Item0='MON=S8051.DLL TP51.DLL(&quot;-p51R&quot;)' Item1='BOOK0=DATASHTS\PHILIPS\P51_PG.PDF(&quot;80C51 Family Programmer&apos;s Guide&quot;)' Item2='BOOK1=DATASHTS\PHILIPS\8XC5X_FX_RX_DS.PDF(&quot;Data Sheet&quot;)' Item3="CPU=IRAM(0-0xFF) CLOCK(33000000) MODP2" Item4='REGFILE=REG51F.H(&quot;Philips&quot;)' Item5='SFILE=&quot;LIB\STARTUP.A51&quot; (&quot;Standard 8051 Startup Code&quot;)' Item6='SIM=S8051.DLL DP51.DLL(&quot;-p51R&quot;)' />
+            <DeviceDescription Description="8051 based CMOS controller with Dual DPTR, 32 I/O Lines,&#x0D;&#x0A;PCA, 3 Timers/Counters, 7 Interrupts/4 Priority Levels,&#x0D;&#x0A;ROM-Less, 256 Bytes on-chip RAM" />
+        </Configuration>
+    </Configurations>
+</TKStudioProject>
