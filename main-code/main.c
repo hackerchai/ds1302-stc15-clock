@@ -11,40 +11,40 @@ All rights reserved.
 #include <intrins.h>
 #include <definecontrol.h>
 #include <DS1302.H>
-#include<stdio.h>
+#include <stdio.h>
 
-char sec,min,hour;   //Ê±¼ä±äÁ¿
-char sec_1,sec_2,min_1,min_2,hour_1,hour_2; //Î»Êý×ª»»
-char year,month,week,day;  //ÌìÊý±äÁ¿
-int status;     //×´Ì¬´úÂë
-int keyValue;   //°´Å¥´úÂë
+char sec,min,hour;   //Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+char sec_1,sec_2,min_1,min_2,hour_1,hour_2; //Î»ï¿½ï¿½×ªï¿½ï¿½
+char year,month,week,day;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+int status;     //×´Ì¬ï¿½ï¿½ï¿½ï¿½
+int keyValue;   //ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½
 
-uint temp;      //ÎÂ¶ÈÊýÖµ
-uint temp_1,temp_2;   //ÎÂ¶ÈÏÔÊ¾²ð·Ö
+uint temp;      //ï¿½Â¶ï¿½ï¿½ï¿½Öµ
+uint temp_1,temp_2;   //ï¿½Â¶ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 /*
 char  DS1302_addr[]={
-      0x80, //0,Ð´ÈëÃë(Second)¼Ä´æÆ÷
-      0x81, //1,¶Á³öÃë(Second)¼Ä´æÆ÷
-      0x82, //2,Ð´Èë·Ö(Minute)¼Ä´æÆ÷
-      0x83, //3,¶Á³ö·Ö(Minute)¼Ä´æÆ÷
-      0x84, //4,Ð´ÈëÐ¡Ê±(Hour)¼Ä´æÆ÷
-      0x85, //5,¶Á³öÐ¡Ê±(Hour)¼Ä´æÆ÷
-      0x86, //6,Ð´ÈëÈÕ(Day)¼Ä´æÆ÷
-      0x87, //7,¶Á³öÈÕ(Day)¼Ä´æÆ÷
-      0x88, //8,Ð´ÈëÔÂ·Ý(Month)¼Ä´æÆ÷
-      0x89, //9,¶Á³öÔÂ·Ý(Month)¼Ä´æÆ÷
-      0x8a, //10,Ð´ÈëÖÜ(Week)¼Ä´æÆ÷
-      0x8b, //11,¶Á³öÖÜ(Week)¼Ä´æÆ÷
-      0x8c, //12,Ð´ÈëÄê·Ý(Year)¼Ä´æÆ÷
-      0x8d, //13,¶Á³öÄê·Ý(Year)¼Ä´æÆ÷
-      0x8e, //14,Ð´±£»¤_¼Ä´æÆ÷
-      0x90, //15,Ð´ä¸Á÷³äµç
-      0x91  //16,¶Áä¸Á÷³äµç
+0x80, //0,Ð´ï¿½ï¿½ï¿½ï¿½(Second)ï¿½Ä´ï¿½ï¿½ï¿½
+0x81, //1,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Second)ï¿½Ä´ï¿½ï¿½ï¿½
+0x82, //2,Ð´ï¿½ï¿½ï¿½ï¿½(Minute)ï¿½Ä´ï¿½ï¿½ï¿½
+0x83, //3,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Minute)ï¿½Ä´ï¿½ï¿½ï¿½
+0x84, //4,Ð´ï¿½ï¿½Ð¡Ê±(Hour)ï¿½Ä´ï¿½ï¿½ï¿½
+0x85, //5,ï¿½ï¿½ï¿½ï¿½Ð¡Ê±(Hour)ï¿½Ä´ï¿½ï¿½ï¿½
+0x86, //6,Ð´ï¿½ï¿½ï¿½ï¿½(Day)ï¿½Ä´ï¿½ï¿½ï¿½
+0x87, //7,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Day)ï¿½Ä´ï¿½ï¿½ï¿½
+0x88, //8,Ð´ï¿½ï¿½ï¿½Â·ï¿½(Month)ï¿½Ä´ï¿½ï¿½ï¿½
+0x89, //9,ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½(Month)ï¿½Ä´ï¿½ï¿½ï¿½
+0x8a, //10,Ð´ï¿½ï¿½ï¿½ï¿½(Week)ï¿½Ä´ï¿½ï¿½ï¿½
+0x8b, //11,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Week)ï¿½Ä´ï¿½ï¿½ï¿½
+0x8c, //12,Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Year)ï¿½Ä´ï¿½ï¿½ï¿½
+0x8d, //13,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Year)ï¿½Ä´ï¿½ï¿½ï¿½
+0x8e, //14,Ð´ï¿½ï¿½ï¿½ï¿½_ï¿½Ä´ï¿½ï¿½ï¿½
+0x90, //15,Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+0x91  //16,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 }  ;
 */
-	 
-/*   ÑÓ³Ùº¯Êý */
+
+/*   ï¿½Ó³Ùºï¿½ï¿½ï¿½ */
 void delayMS(unsigned int ms)   //@11.0592MHz
 {
 	unsigned char y;
@@ -58,7 +58,7 @@ void delayMS(unsigned int ms)   //@11.0592MHz
 			_nop_();
 		}
 	}
-}	
+}
 
 void delay2us()		//@11.0592MHz
 {
@@ -75,91 +75,91 @@ void DelayXus(uint us)   //@11.0592MHz
 
 
 
-/*************DS1302Ê±¼äÄ£¿é&DS18B20ÎÂ¶ÈÄ£¿éÏà¹ØÇý¶¯º¯Êý******************************/
+/*************DS1302Ê±ï¿½ï¿½Ä£ï¿½ï¿½&DS18B20ï¿½Â¶ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******************************/
 
-/*DS1302Çý¶¯º¯Êý*/
+/*DS1302ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 
-/*************Ð´ÈëÒ»×Ö½Ú****************/
-void DS1302_Input_Byte(char Input)  //ÏòÊ±ÖÓICÐ´ÈëÒ»×Ö½Ú
-{   
-    char i;
+/*************Ð´ï¿½ï¿½Ò»ï¿½Ö½ï¿½****************/
+void DS1302_Input_Byte(char Input)  //ï¿½ï¿½Ê±ï¿½ï¿½ICÐ´ï¿½ï¿½Ò»ï¿½Ö½ï¿½
+{
+	char i;
 	T_SCLK = 0;
-    delay2us();
-    ACC =Input;
-    for(i=8; i>0; i--)
-    {  
-        T_DIO = ACC_0;            //Ïàµ±ÓÚ»ã±àÖÐµÄ RRC
+	delay2us();
+	ACC =Input;
+	for(i=8; i>0; i--)
+	{
+		T_DIO = ACC_0;            //ï¿½àµ±ï¿½Ú»ï¿½ï¿½ï¿½ï¿½Ðµï¿½ RRC
 		delay2us();
-        T_SCLK = 1;
+		T_SCLK = 1;
 		delay2us();
-        T_SCLK = 0;
-        ACC = ACC >> 1; 
-    }  
+		T_SCLK = 0;
+		ACC = ACC >> 1;
+	}
 }
 
-/*************¶ÁÈ¡Ò»×Ö½Ú****************/
-char DS1302_Output_Byte(void)      //´ÓÊ±ÖÓIC¶ÁÈ¡Ò»×Ö½Ú()
-{ 
-    char i;   
-    for(i=8; i>0; i--)
-    {  
-     ACC>>=1; 
-	 T_DIO= 1;
-	 delay2us();
-     ACC_7 = T_DIO;
-     T_SCLK = 1;                 //Ïàµ±ÓÚ»ã±àÖÐµÄ RRC 
-	 delay2us();
-     T_SCLK = 0;   
-	 delay2us();
-    }
+/*************ï¿½ï¿½È¡Ò»ï¿½Ö½ï¿½****************/
+char DS1302_Output_Byte(void)      //ï¿½ï¿½Ê±ï¿½ï¿½ICï¿½ï¿½È¡Ò»ï¿½Ö½ï¿½()
+{
+	char i;
+	for(i=8; i>0; i--)
+	{
+		ACC>>=1;
+		T_DIO= 1;
+		delay2us();
+		ACC_7 = T_DIO;
+		T_SCLK = 1;                 //ï¿½àµ±ï¿½Ú»ï¿½ï¿½ï¿½ï¿½Ðµï¿½ RRC
+		delay2us();
+		T_SCLK = 0;
+		delay2us();
+	}
 	T_DIO = 0;
-    delay2us();
-    return(ACC); 
+	delay2us();
+	return(ACC);
 }
 
-/*************Ð´Ò»×Ö½ÚÊý¾Ý****************/
-void DS1302_Write_one( char addr,dat )       // Ð´ÈëµØÖ·¡¢Êý¾Ý×Ó³ÌÐò 
+/*************Ð´Ò»ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½****************/
+void DS1302_Write_one( char addr,dat )       // Ð´ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½
 {
-       T_CE=0;                             //T_CEÒý½ÅÎªµÍ£¬Êý¾Ý´«ËÍÖÐÖ¹
-       T_SCLK=0;                          //ÇåÁãÊ±ÖÓ×ÜÏß
-       T_CE = 1;                          //T_CEÒý½ÅÎª¸ß£¬Âß¼­¿ØÖÆÓÐÐ§
-       DS1302_Input_Byte(addr);           // µØÖ·£¬ÃüÁî 
-       DS1302_Input_Byte(dat);          // Ð´1ByteÊý¾Ý
-       T_SCLK = 1;
-       T_CE = 0;     
+	T_CE=0;                             //T_CEï¿½ï¿½ï¿½ï¿½Îªï¿½Í£ï¿½ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹
+	T_SCLK=0;                          //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	T_CE = 1;                          //T_CEï¿½ï¿½ï¿½ï¿½Îªï¿½ß£ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
+	DS1302_Input_Byte(addr);           // ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	DS1302_Input_Byte(dat);          // Ð´1Byteï¿½ï¿½ï¿½ï¿½
+	T_SCLK = 1;
+	T_CE = 0;
 }
 
-/*************¶ÁÒ»×Ö½ÚÊý¾Ý****************/
-char DS1302_Read ( char addr )    //Êý¾Ý¶ÁÈ¡×Ó³ÌÐò
+/*************ï¿½ï¿½Ò»ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½****************/
+char DS1302_Read ( char addr )    //ï¿½ï¿½ï¿½Ý¶ï¿½È¡ï¿½Ó³ï¿½ï¿½ï¿½
 {
-       char date;
-       T_CE=0;           
-       T_SCLK=0;             
-       T_CE = 1; 
-       DS1302_Input_Byte(addr);        // µØÖ·£¬ÃüÁî 
-       date = DS1302_Output_Byte();         // ¶Á1ByteÊý¾Ý
-       T_SCLK = 1;
-       T_CE = 0;
-       return(date);
+	char date;
+	T_CE=0;
+	T_SCLK=0;
+	T_CE = 1;
+	DS1302_Input_Byte(addr);        // ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	date = DS1302_Output_Byte();         // ï¿½ï¿½1Byteï¿½ï¿½ï¿½ï¿½
+	T_SCLK = 1;
+	T_CE = 0;
+	return(date);
 }
 
 
-/*************Ð´ÈëÊ±¼äÊý¾Ý****************/
+/*************Ð´ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½****************/
 void DS1302_Write(char sec_w,min_w,hour_w,day_w,month_w,week_w,year_w)
 {
-	    DS1302_Write_one(0x8e,0x00);
-        DS1302_Write_one(0x82,min_w);
-        DS1302_Write_one(0x84,hour_w);
-		DS1302_Write_one(0x86,day_w);
-        DS1302_Write_one(0x88,month_w);
-        DS1302_Write_one(0x8a,week_w);
-        DS1302_Write_one(0x8c,year_w);
-		DS1302_Write_one(0x80,sec_w);
-		DS1302_Write_one(0x8e,0x80);
-		
-} 
+	DS1302_Write_one(0x8e,0x00);
+	DS1302_Write_one(0x82,min_w);
+	DS1302_Write_one(0x84,hour_w);
+	DS1302_Write_one(0x86,day_w);
+	DS1302_Write_one(0x88,month_w);
+	DS1302_Write_one(0x8a,week_w);
+	DS1302_Write_one(0x8c,year_w);
+	DS1302_Write_one(0x80,sec_w);
+	DS1302_Write_one(0x8e,0x80);
 
-/*************Ê±¼ä×ª»»ÎªÏÔÊ¾¸ñÊ½****************/
+}
+
+/*************Ê±ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½Ê¾ï¿½ï¿½Ê½****************/
 void timeConvert()
 {
 	sec_1 = sec>>4;
@@ -168,56 +168,56 @@ void timeConvert()
 	min_2 = min&0x0f;
 	hour_1 = hour>>4;
 	hour_2 = hour&0x0f;
-	
+
 }
-  
-/*************´ÓÐ¾Æ¬¶ÁÈ¡Ê±¼ä****************/
-void DS1302_readtime()                           
+
+/*************ï¿½ï¿½Ð¾Æ¬ï¿½ï¿½È¡Ê±ï¿½ï¿½****************/
+void DS1302_readtime()
 {
-    sec=DS1302_Read(0x81);                    //¶ÁÃë
-    min=DS1302_Read(0x83);                    //¶Á·Ö
-    hour=DS1302_Read(0x85);                   //¶ÁÊ±
-    day=DS1302_Read(0x87);                    //¶ÁÈÕ
-    month=DS1302_Read(0x89);                  //¶ÁÔÂ
-    year=DS1302_Read(0x8d);                   //¶ÁÄê
-    week=DS1302_Read(0x8b);                   //¶ÁÐÇÆÚ
+	sec=DS1302_Read(0x81);                    //ï¿½ï¿½ï¿½ï¿½
+	min=DS1302_Read(0x83);                    //ï¿½ï¿½ï¿½ï¿½
+	hour=DS1302_Read(0x85);                   //ï¿½ï¿½Ê±
+	day=DS1302_Read(0x87);                    //ï¿½ï¿½ï¿½ï¿½
+	month=DS1302_Read(0x89);                  //ï¿½ï¿½ï¿½ï¿½
+	year=DS1302_Read(0x8d);                   //ï¿½ï¿½ï¿½ï¿½
+	week=DS1302_Read(0x8b);                   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	timeConvert();
-	
+
 }
 
 
 
-/*   DS18B20ÎÂ¶È´«¸ÐÆ÷Ä£¿é*/
-/**********³õÊ¼»¯º¯Êý**********************/
-void DS18B20_Init(void) 
+/*   DS18B20ï¿½Â¶È´ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½*/
+/**********ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**********************/
+void DS18B20_Init(void)
 {
 	uchar x=0;
-	DQ = 1;          //DQ¸´Î»
-	DelayXus(7); //ÉÔ×öÑÓÊ±
-	DQ = 0;          //µ¥Æ¬»ú½«DQÀ­µÍ
-	DelayXus(500); //¾«È·ÑÓÊ± ´óÓÚ 480us
-	DQ = 1;          //À­¸ß×ÜÏß
-	DelayXus(200);  //×ã¹»µÄÑÓ³Ù È·±£ÄÜÈÃDS18B20·¢³ö´æÔÚÂö³å
+	DQ = 1;          //DQï¿½ï¿½Î»
+	DelayXus(7); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
+	DQ = 0;          //ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½DQï¿½ï¿½ï¿½ï¿½
+	DelayXus(500); //ï¿½ï¿½È·ï¿½ï¿½Ê± ï¿½ï¿½ï¿½ï¿½ 480us
+	DQ = 1;          //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	DelayXus(200);  //ï¿½ã¹»ï¿½ï¿½ï¿½Ó³ï¿½ È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DS18B20ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
-/***********¶ÁÒ»¸ö×Ö½Ú**************/
+/***********ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö½ï¿½**************/
 uchar DS18B20_ReadOneChar(void)
 {
 	uchar i=0;
 	uchar dat = 0;
 	for (i=8;i>0;i--)
 	{
-		DQ = 0; // ¸øÂö³åÐÅºÅ
+		DQ = 0; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½
 		DelayXus(1);
 		dat>>=1;
-		DQ = 1; // ¸øÂö³åÐÅºÅ
+		DQ = 1; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½
 		DelayXus(7);
 		if(DQ)
-			dat|=0x80;
-		DelayXus(60);    
-	}	
+		dat|=0x80;
+		DelayXus(60);
+	}
 	return(dat);
 }
-/*************Ð´Ò»¸ö×Ö½Ú****************/
+/*************Ð´Ò»ï¿½ï¿½ï¿½Ö½ï¿½****************/
 void DS18B20_WriteOneChar(uchar dat)
 {
 	uchar i=0;
@@ -232,93 +232,93 @@ void DS18B20_WriteOneChar(uchar dat)
 		DelayXus(7);
 	}
 }
-/**************¶ÁÈ¡µ±Ç°ÎÂ¶È************/
+/**************ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½Â¶ï¿½************/
 uint DS18B20_ReadTemp(void)
 {
 	uchar a;
 	uchar b;
 	uint readTemp;
 	DS18B20_Init();
-	DS18B20_WriteOneChar(0xCC);     
-	DS18B20_WriteOneChar(0x44);  
+	DS18B20_WriteOneChar(0xCC);
+	DS18B20_WriteOneChar(0x44);
 	while (!DQ);
 	DS18B20_Init();
-	DS18B20_WriteOneChar(0xCC);  
-	DS18B20_WriteOneChar(0xBE);  
-	a=DS18B20_ReadOneChar();    //¶ÁÈ¡ÎÂ¶ÈÖµµÍÎ»
-	b=DS18B20_ReadOneChar();      //¶ÁÈ¡ÎÂ¶ÈÖµ¸ßÎ»
+	DS18B20_WriteOneChar(0xCC);
+	DS18B20_WriteOneChar(0xBE);
+	a=DS18B20_ReadOneChar();    //ï¿½ï¿½È¡ï¿½Â¶ï¿½Öµï¿½ï¿½Î»
+	b=DS18B20_ReadOneChar();      //ï¿½ï¿½È¡ï¿½Â¶ï¿½Öµï¿½ï¿½Î»
 	readTemp = b<<8;
-	readTemp |= a; 
+	readTemp |= a;
 	readTemp = readTemp>>4;
-	return readTemp;    
+	return readTemp;
 }
 
-/*   ÏÔÊ¾Ïà¹Øº¯Êý*/
+/*   ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½*/
 
-/**************ÎÂ¶ÈÏÔÊ¾º¯Êý************/
+/**************ï¿½Â¶ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½************/
 void tempshow(int shi,int ge)
 {
 	E1 = 1;
-	P1 = allclear;	    
-	
-	
+	P1 = allclear;
+
+
 	E2 = 0;
 	P1 = chart[shi];
-    delayMS(5);
+	delayMS(5);
 	P1 = allclear;
 	E2 = 1;
-	
+
 	E3 = 0;
-	P1 = chart[ge];	
+	P1 = chart[ge];
 	delayMS(5);
 	P1 = allclear;
 	E3 = 1;
-	
+
 	E4 = 0;
-	P1 = chart[11];	
+	P1 = chart[11];
 	delayMS(5);
 	P1 = allclear;
 	E4 = 1;
-	
+
 	MDLIGHT = 1;
 }
-/* ************ÏÔÊ¾×ª»»º¯Êý******************************/
+/* ************ï¿½ï¿½Ê¾×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******************************/
 void convertShow(char hour_s1,hour_s2,min_s1,min_s2)
 {
-	
-		E1 = 0;
-	    P1 = chart[hour_s1];	    
-		delayMS(5);
-		P1 = allclear;	 
-		E1 = 1;
-		
-		E2 = 0;
-	    P1 = chart[hour_s2];
-		delayMS(5);
-		P1 = allclear;
-		E2 = 1;
-		
-	    E3 = 0;
-	    P1 = chart[min_s1];	
-		delayMS(5);
-		P1 = allclear;
-		E3 = 1;
-		
-		E4 = 0;
-	    P1 = chart[min_s2];	
-		delayMS(5);
-		P1 = allclear;
-		E4 = 1;
-		if(sec_2%0x02==0x01)
-		{
-			MDLIGHT = 0;
-		}
-		else
-			MDLIGHT = 1;
-		
+
+	E1 = 0;
+	P1 = chart[hour_s1];
+	delayMS(5);
+	P1 = allclear;
+	E1 = 1;
+
+	E2 = 0;
+	P1 = chart[hour_s2];
+	delayMS(5);
+	P1 = allclear;
+	E2 = 1;
+
+	E3 = 0;
+	P1 = chart[min_s1];
+	delayMS(5);
+	P1 = allclear;
+	E3 = 1;
+
+	E4 = 0;
+	P1 = chart[min_s2];
+	delayMS(5);
+	P1 = allclear;
+	E4 = 1;
+	if(sec_2%0x02==0x01)
+	{
+		MDLIGHT = 0;
+	}
+	else
+	MDLIGHT = 1;
+
 }
 
-/*************°´Å¥ÏÔÊ¾ÑÓÊ±******************************/
+/*************ï¿½ï¿½Å¥ï¿½ï¿½Ê¾ï¿½ï¿½Ê±******************************/
 void delayShow(int count)
 {
 	int j;
@@ -329,114 +329,114 @@ void delayShow(int count)
 	}
 }
 
-/*************ÎÂ¶È´¦Àíº¯Êý******************************/
+/*************ï¿½Â¶È´ï¿½ï¿½ï¿½ï¿½ï¿½******************************/
 void tempHandle()
 {
 	temp_1 = temp%100/10;
 	temp_2 = temp%10;
 }
 
-/*************ÐÞ¸ÄÊ±¼äº¯Êý******************************/
-void modifyTime(int mode)  //modeÖ¸Ã÷ÐÞ¸ÄÐ¡Ê±»ò·ÖÖÓ   1£ºÐ¡Ê±   2£º·ÖÖÓ
+/*************ï¿½Þ¸ï¿½Ê±ï¿½äº¯ï¿½ï¿½******************************/
+void modifyTime(int mode)  //modeÖ¸ï¿½ï¿½ï¿½Þ¸ï¿½Ð¡Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   1ï¿½ï¿½Ð¡Ê±   2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
 
-	   //ÐÞ¸ÄÐ¡Ê±£¨1£©+µÝÔö£¨8£©
-	   if(mode == 9)
-	   {
-		  if(hour==0x23)
-		  {
-			  hour = 0x00;
-		  }
-		  else if(hour==0x09)
-		  {
-			 hour=0x10;
-		  }
-		  else if(hour==0x19)
-		  {
-			 hour=0x20;
-		  }
-		  else
-		  {
-			  hour=hour+0x01;
-		  }
-		  
-		  timeConvert();
-		  convertShow(hour_1,hour_2,min_1,min_2);
-	   }
-	
-	   //ÐÞ¸ÄÐ¡Ê±£¨1£©+µÝ¼õ£¨16£©
-	   if(mode == 17)
-	   {
-		   if(hour==0x00)
-		  {
-			  hour = 0x23;
-		  }
-		  else if(hour==0x10)
-		  {
-			  hour = 0x09;
-		  }
-		  else if(hour==0x20)
-		  {
-			  hour = 0x19;
-		  }
-		  else
-		  {
-			  hour = hour-0x01;
-		  }
-		  
-		  timeConvert();
-		  convertShow(hour_1,hour_2,min_1,min_2);
-	   }
-	
-	   //ÐÞ¸Ä·ÖÖÓ£¨2£©+µÝÔö£¨8£©
-       if(mode == 10)
-	   {
-		  
-		  if(min==0x59)
-		  {
-			  min=0x00;	  
-		  }
-		  else if(min-(min_1<<4)==0x09)
-		  {
-			 min=(min_1+0x01)<<4;
-		  }
-		  else
-		  {
-			  min=min+0x01;
-		  }
-		  
-		  timeConvert();
-		  convertShow(hour_1,hour_2,min_1,min_2);
-	   }
-	
-	   //ÐÞ¸Ä·ÖÖÓ£¨2£©+µÝ¼õ£¨16£©
-       if(mode == 18)
-	   {
-		   if(min==0x00)
-		   { 
-		      min=0x59;  
-		   }
-		   else if(min_2==0x00)
-		   {
-			  min=min-0x10;
-			  min=min+0x09;
-		   }
-		   else
-		   {
-		      min=min-0x01;
-		   }
-		  
-		  timeConvert();
-		  convertShow(hour_1,hour_2,min_1,min_2);
-	    }		
+	//ï¿½Þ¸ï¿½Ð¡Ê±ï¿½ï¿½1ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½
+	if(mode == 9)
+	{
+		if(hour==0x23)
+		{
+			hour = 0x00;
+		}
+		else if(hour==0x09)
+		{
+			hour=0x10;
+		}
+		else if(hour==0x19)
+		{
+			hour=0x20;
+		}
+		else
+		{
+			hour=hour+0x01;
+		}
+
+		timeConvert();
+		convertShow(hour_1,hour_2,min_1,min_2);
+	}
+
+	//ï¿½Þ¸ï¿½Ð¡Ê±ï¿½ï¿½1ï¿½ï¿½+ï¿½Ý¼ï¿½ï¿½ï¿½16ï¿½ï¿½
+	if(mode == 17)
+	{
+		if(hour==0x00)
+		{
+			hour = 0x23;
+		}
+		else if(hour==0x10)
+		{
+			hour = 0x09;
+		}
+		else if(hour==0x20)
+		{
+			hour = 0x19;
+		}
+		else
+		{
+			hour = hour-0x01;
+		}
+
+		timeConvert();
+		convertShow(hour_1,hour_2,min_1,min_2);
+	}
+
+	//ï¿½Þ¸Ä·ï¿½ï¿½Ó£ï¿½2ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½
+	if(mode == 10)
+	{
+
+		if(min==0x59)
+		{
+			min=0x00;
+		}
+		else if(min-(min_1<<4)==0x09)
+		{
+			min=(min_1+0x01)<<4;
+		}
+		else
+		{
+			min=min+0x01;
+		}
+
+		timeConvert();
+		convertShow(hour_1,hour_2,min_1,min_2);
+	}
+
+	//ï¿½Þ¸Ä·ï¿½ï¿½Ó£ï¿½2ï¿½ï¿½+ï¿½Ý¼ï¿½ï¿½ï¿½16ï¿½ï¿½
+	if(mode == 18)
+	{
+		if(min==0x00)
+		{
+			min=0x59;
+		}
+		else if(min_2==0x00)
+		{
+			min=min-0x10;
+			min=min+0x09;
+		}
+		else
+		{
+			min=min-0x01;
+		}
+
+		timeConvert();
+		convertShow(hour_1,hour_2,min_1,min_2);
+	}
 }
 
-/*************°´Å¥É¨Ãèº¯Êý******************************/
-void keyScan()     
+/*************ï¿½ï¿½Å¥É¨ï¿½èº¯ï¿½ï¿½******************************/
+void keyScan()
 {
 	if (KEY_1==0 || KEY_2==0 || KEY_3==0)
 	{
-		delayMS(20);   		//20ºÁÃëÈí¼þ·À¶¶
+		delayMS(20);   		//20ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (KEY_1 == 0)
 		{
 			keyValue = 1;
@@ -447,27 +447,27 @@ void keyScan()
 			}
 		}
 		if (KEY_2 == 0)
-	    {
+		{
 			keyValue = 2;
 			while(KEY_2==0)
 			{
 				modifyTime(status+16);
 				delayShow(500);
 			}
-	    }
-	    if (KEY_3 == 0)
-	    {
+		}
+		if (KEY_3 == 0)
+		{
 			keyValue = 3;
-	    }
+		}
 	}
 }
 
-/*************°´Å¥ÏìÓ¦´¦Àíº¯Êý******************************/
+/*************ï¿½ï¿½Å¥ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******************************/
 void keyHandle()
 {
 	if(keyValue==1)
 	{
-	    DS1302_Write(sec,min,hour,day,month,week,year);
+		DS1302_Write(sec,min,hour,day,month,week,year);
 		keyValue = 0;
 	}
 	else if(keyValue==2)
@@ -477,72 +477,72 @@ void keyHandle()
 	}
 	else if(keyValue==3)
 	{
-	    if (status==1)
-		{  
+		if (status==1)
+		{
 			status = 2;
 		}
 		else if(status==2)
-		{  
+		{
 			status = 3;
 		}
 		else if(status==3)
-		{  
+		{
 			status = 1;
 		}
 		keyValue = 0;
-               
+
 	}
 }
 
-/*************µ¥Æ¬»ú³õÊ¼»¯º¯Êý******************************/
+/*************ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******************************/
 void init()
 {
-	//¹Ø±ÕËùÓÐÐ¡µÆ
-    E1=1;
-    E2=1;
-    E3=1;
-    E4=1;
+	//ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½
+	E1=1;
+	E2=1;
+	E3=1;
+	E4=1;
 	MDLIGHT = 1;
 	P1 = allclear;
 	T_CE = 0;
 	T_SCLK = 0;
-	
-	//Ä¬ÈÏ³õÊ¼»¯Ê±¼ä12:00
+
+	//Ä¬ï¿½Ï³ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½12:00
 	sec = 0x00;
 	min = 0x00;
 	hour = 0x16;
 	year = 0x01;
-    month = 0x01;
-    week = 0x01;
-    day = 0x01;
+	month = 0x01;
+	week = 0x01;
+	day = 0x01;
 	status = 1;
 	keyValue = 0;
 	delayMS(1000);
-	//DS1302³õÊ¼»¯ÅÐ¶ÏÊÇ·ñ´æÔÚºó±¸µçÔ´
-	
+	//DS1302ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Úºó±¸µï¿½Ô´
+
 	if(DS1302_Read(0x81)&0x80==0x80)
 	{
 		DS1302_Write_one(0x8e,0x00);
-		DS1302_Write_one(0x80,sec);  //ÆðÕñ
+		DS1302_Write_one(0x80,sec);  //ï¿½ï¿½ï¿½ï¿½
 		DS1302_Write_one(0x8e,0x80);
 	}
 	else
 	{
-		
+
 	}
 }
 
-/*************Ö÷º¯Êý******************************/
+/*************ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******************************/
 void main()
 {
 	init();
-	
+
 	while(1)
 	{
 		if(status==3)
 		{
 			temp = DS18B20_ReadTemp();
-		    tempHandle();
+			tempHandle();
 			tempshow(temp_1,temp_2);
 		}
 		else
