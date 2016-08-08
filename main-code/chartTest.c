@@ -23,15 +23,15 @@ void delayMS(unsigned int ms)
 			_nop_();
 		}
 	}
-}	
+}
 
 void init()
 {
 	//Light off all
-    E1=1;
-    E2=1;
-    E3=1;
-    E4=1;
+	E1=1;
+	E2=1;
+	E3=1;
+	E4=1;
 	P1 = allclear;
 }
 
@@ -41,30 +41,29 @@ void  main()
 	{
 		//Light1 show 1
 		E1 = 0;
-	    P1 = chart[9];
-	    delayMS(5);
+		P1 = chart[9];
+		delayMS(5);
 		E1 = 1;
-		
+
 		//Light2 show 2
 		E2 = 0;
 		P1 = chart[5];
 		delayMS(5);
 		E2 = 1;
-		
+
 		//Light3 show 3
 		E3 = 0;
 		P1 = chart[7];
 		delayMS(5);
 		E3 = 1;
-		
+
 		//Light4 show 4
 		E4 = 0;
 		P1 = chart[8];
 		delayMS(5);
 		E4 = 1;
 	}
-	
-	
-	
-}
 
+
+
+}

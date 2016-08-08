@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="Windows-1252" ?>
-<TKStudioProject Name="CLOCK" BuildTool="0" Version="3.00" Author="ChaiYisheng[²ñéóêÉ]">
+<TKStudioProject Name="CLOCK" BuildTool="0" Version="3.00" Author="ChaiYisheng">
     <Files>
         <Filter Name="Source Code">
             <File RelativePath="main.c">

@@ -12,7 +12,7 @@ All righDQ reserved.
 #include <STC15W402AS.h>
 #include <intrins.h>
 #include <definecontrol.h>
-#include<stdio.h>
+#include <stdio.h>
 
 uint temp;
 uint temp_1,temp_2;
@@ -34,7 +34,7 @@ void delayMS(uint ms)   //@11.0592MHz
 			_nop_();
 		}
 	}
-}	
+}
 
 void Delay1us()		//@11.0592MHz
 {
@@ -101,7 +101,7 @@ void Delay200us()		//@11.0592MHz
 
 /**********ds18b20初始化函数**********************/
 
-void DS18B20_Init(void) 
+void DS18B20_Init(void)
 {
 	uchar x=0;
 	DQ = 1;          //DQ复位
@@ -110,7 +110,7 @@ void DS18B20_Init(void)
 	Delay500us(); //精确延时 大于 480us
 	DQ = 1;          //拉高总线
 	Delay200us();  //足够的延迟 确保能让DS18B20发出存在脉冲
-	x=DQ;   
+	x=DQ;
 	Delay200us();
 }
 
@@ -128,9 +128,9 @@ uchar DS18B20_ReadOneChar(void)
 		DQ = 1; // 给脉冲信号
 		Delay7us();
 		if(DQ)
-			dat|=0x80;
-		Delay60us();     
-	}	
+		dat|=0x80;
+		Delay60us();
+	}
 	return(dat);
 }
 
@@ -159,29 +159,29 @@ uint DS18B20_ReadTemp(void)
 	uchar b;
 	float tt;
 	uint readTemp;
-	
+
 
 	DS18B20_Init();
-	DS18B20_WriteOneChar(0xCC);     
-	DS18B20_WriteOneChar(0x44);  
-	
+	DS18B20_WriteOneChar(0xCC);
+	DS18B20_WriteOneChar(0x44);
+
 	while (!DQ);
-      
+
 	DS18B20_Init();
-	DS18B20_WriteOneChar(0xCC);  
-	DS18B20_WriteOneChar(0xBE);  
+	DS18B20_WriteOneChar(0xCC);
+	DS18B20_WriteOneChar(0xBE);
 
 
 	a=DS18B20_ReadOneChar();    //读取温度值低位
 	b=DS18B20_ReadOneChar();      //读取温度值高位
-	
+
 
 	readTemp = b<<8;
-	readTemp |= a; 
+	readTemp |= a;
 	tt = readTemp*0.0625;
 	readTemp = tt + 0.5;
 	return readTemp;
-        
+
 }
 
 
@@ -197,25 +197,25 @@ void tempHandle()
 void tempshow(int shi,int ge)
 {
 	E1 = 0;
-	P1 = allclear;	    
-    delayMS(5);
+	P1 = allclear;
+	delayMS(5);
 	E1 = 1;
-		
+
 	E2 = 0;
 	P1 = chart[shi];
-    delayMS(5);
+	delayMS(5);
 	E2 = 1;
-		
+
 	E3 = 0;
-	P1 = chart[ge];	
+	P1 = chart[ge];
 	delayMS(5);
 	E3 = 1;
-		
+
 	E4 = 0;
-	P1 = chart[11];	
+	P1 = chart[11];
 	delayMS(5);
 	E4 = 1;
-	
+
 	MDLIGHT = 1;
 }
 
@@ -235,12 +235,12 @@ void init()
 void main()
 {
 	init();
-	
+
 	while(1)
 	{
 		temp = DS18B20_ReadTemp();
 		tempHandle();
 		tempshow(temp_1,temp_2);
 	}
-	
+
 }
