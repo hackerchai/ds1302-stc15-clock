@@ -67,7 +67,7 @@
 ## 用途
   可作为家用时钟，同时提供了针对STC系列单片机较为成熟的DS1302和DS18B20驱动方案，可以作为院校单片机学习项目。
 ## 关于作者
-主要设计者&代码贡献者：[柴轶晟](https://hackerchai.com) （hackerchai.com@gmail.com）
+主要设计者&代码贡献者：[hackerchai](https://github.com/hackerchai)([柴轶晟](https://hackerchai.com))
 
 参与开发者：沈冠霖 王荣
 
