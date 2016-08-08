@@ -15,6 +15,6 @@ sbit ACC_5 = ACC^5;
 sbit ACC_6 = ACC^6;
 sbit ACC_7 = ACC^7; 
 //**************************
-sbit T_SCLK = P1^1;                    // DS1302 ±÷”–≈∫≈       7Ω≈
-sbit T_DIO= P1^2;                      // DS1302 ˝æ›–≈∫≈       6Ω≈
+sbit T_SCLK = P1^1;                    // DS1302Êó∂Èíü‰ø°Âè∑       7ËÑö
+sbit T_DIO= P1^2;                      // DS1302Êï∞ÊçÆ‰ø°Âè∑       6ËÑö
 sbit T_CE = P1^3;

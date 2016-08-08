@@ -11,14 +11,14 @@ All rights reserved.
 char chart[10] = {0x80,0xce,0x24,0x0c,0x4a,0x18,0x10,0xcc,0x00,0x08};
 char allclear = 0xff;
 
-/*  ËÄ¸ö8µÄ¿ØÖÆÒý½Å  */
+/*  å››ä¸ª8çš„æŽ§åˆ¶å¼•è„š  */
 
 sbit	E1=P2^6;
 sbit	E2=P2^7;
 sbit	E3=P5^4;
 sbit	E4=P5^5;
 
-/*  ABLIGHTDEFGµÄ¿ØÖÆÒý½Å  */
+/*  ABLIGHTDEFGçš„æŽ§åˆ¶å¼•è„š  */
 sbit	ALIGHT=P1^1;
 sbit	BLIGHT=P1^4;
 sbit	CLIGHT=P1^5;
@@ -28,10 +28,10 @@ sbit	FLIGHT=P1^2;
 sbit	GLIGHT=P1^7;
 sbit    MDLIGHT=P1^0;
 
-/*  °´Å¥µÄ¿ØÖÆÒý½Å  */
+/*  æŒ‰é’®çš„æŽ§åˆ¶å¼•è„š  */
 
 
-/*   ÎÂ¶È¿ØÖÆÆ÷ºÍ1302Ð¾Æ¬Òý½Å  */
+/*   æ¸©åº¦æŽ§åˆ¶å™¨å’Œ1302èŠ¯ç‰‡å¼•è„š  */
 
 sbit  DS1302_RST = P1^3;
 sbit  DS1302_CLK  = P1^1;

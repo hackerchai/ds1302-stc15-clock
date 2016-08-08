@@ -3,9 +3,9 @@
 
 /////////////////////////////////////////////////
 
-//°üº¬±¾Í·ÎÄ¼şºó,²»ÓÃÁíÍâÔÙ°üº¬"REG51.H"
+//åŒ…å«æœ¬å¤´æ–‡ä»¶å,ä¸ç”¨å¦å¤–å†åŒ…å«"REG51.H"
 
-//ÄÚºËÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//å†…æ ¸ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr ACC         =   0xe0;
 sfr B           =   0xf0;
 sfr PSW         =   0xd0;
@@ -25,7 +25,7 @@ sfr DPL1        =   0xe4;
 sfr DPH1        =   0xe5;
 
 
-//I/O ¿ÚÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//I/O å£ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr P0          =   0x80;
 sfr P1          =   0x90;
 sfr P2          =   0xa0;
@@ -116,8 +116,8 @@ sbit P75        =   P7^5;
 sbit P76        =   P7^6;
 sbit P77        =   P7^7;
 
-//ÈçÏÂÌØÊâ¹¦ÄÜ¼Ä´æÆ÷Î»ÓÚÀ©Õ¹RAMÇøÓò
-//·ÃÎÊÕâĞ©¼Ä´æÆ÷,ĞèÏÈ½«P_SW2µÄBIT7ÉèÖÃÎª1,²Å¿ÉÕı³£¶ÁĞ´
+//å¦‚ä¸‹ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨ä½äºæ‰©å±•RAMåŒºåŸŸ
+//è®¿é—®è¿™äº›å¯„å­˜å™¨,éœ€å…ˆå°†P_SW2çš„BIT7è®¾ç½®ä¸º1,æ‰å¯æ­£å¸¸è¯»å†™
 #define P0PU        (*(unsigned char volatile xdata *)0xfe10)
 #define P1PU        (*(unsigned char volatile xdata *)0xfe11)
 #define P2PU        (*(unsigned char volatile xdata *)0xfe12)
@@ -135,7 +135,7 @@ sbit P77        =   P7^7;
 #define P6NCS       (*(unsigned char volatile xdata *)0xfe1e)
 #define P7NCS       (*(unsigned char volatile xdata *)0xfe1f)
 
-//ÏµÍ³¹ÜÀíÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//ç³»ç»Ÿç®¡ç†ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr PCON        =   0x87;
 #define SMOD        0x80
 #define SMOD0       0x40
@@ -163,15 +163,15 @@ sfr P_SW2       =   0xba;
 sfr VOCTRL      =   0xbb;
 sfr RSTCFG      =   0xff;
 
-//ÈçÏÂÌØÊâ¹¦ÄÜ¼Ä´æÆ÷Î»ÓÚÀ©Õ¹RAMÇøÓò
-//·ÃÎÊÕâĞ©¼Ä´æÆ÷,ĞèÏÈ½«P_SW2µÄBIT7ÉèÖÃÎª1,²Å¿ÉÕı³£¶ÁĞ´
+//å¦‚ä¸‹ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨ä½äºæ‰©å±•RAMåŒºåŸŸ
+//è®¿é—®è¿™äº›å¯„å­˜å™¨,éœ€å…ˆå°†P_SW2çš„BIT7è®¾ç½®ä¸º1,æ‰å¯æ­£å¸¸è¯»å†™
 #define CKSEL       (*(unsigned char volatile xdata *)0xfe00)
 #define CLKDIV      (*(unsigned char volatile xdata *)0xfe01)
 #define IRC24MCR    (*(unsigned char volatile xdata *)0xfe02)
 #define XOSCCR      (*(unsigned char volatile xdata *)0xfe03)
 #define IRC32KCR    (*(unsigned char volatile xdata *)0xfe04)
 
-//ÖĞ¶ÏÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//ä¸­æ–­ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr IE          =   0xa8;
 sbit EA         =   IE^7;
 sbit ELVD       =   IE^6;
@@ -238,7 +238,7 @@ sfr AUXINTIF    =   0xef;
 #define T3IF        0x02
 #define T2IF        0x01
 
-//¶¨Ê±Æ÷ÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//å®šæ—¶å™¨ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr TCON        =   0x88;
 sbit TF1        =   TCON^7;
 sbit TR1        =   TCON^6;
@@ -291,7 +291,7 @@ sfr WDT_CONTR   =   0xc1;
 #define CLR_WDT     0x10
 #define IDL_WDT     0x08
 
-//´®ĞĞ¿ÚÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//ä¸²è¡Œå£ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr SCON        =   0x98;
 sbit SM0        =   SCON^7;
 sbit SM1        =   SCON^6;
@@ -335,7 +335,7 @@ sfr S4BUF       =   0x85;
 sfr SADDR       =   0xa9;
 sfr SADEN       =   0xb9;
 
-//ADC ÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//ADC ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr ADC_CONTR   =   0xbc;
 #define ADC_POWER   0x80
 #define ADC_START   0x40
@@ -345,7 +345,7 @@ sfr ADC_RESL    =   0xbe;
 sfr ADCCFG      =   0xde;
 #define ADC_RESFMT  0x20
 
-//SPI ÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//SPI ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr SPSTAT      =   0xcd;
 #define SPIF        0x80
 #define WCOL        0x40
@@ -358,7 +358,7 @@ sfr SPCTL       =   0xce;
 #define CPHA        0x04
 sfr SPDAT       =   0xcf;
 
-//IAP/ISP ÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//IAP/ISP ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr IAP_DATA    =   0xc2;
 sfr IAP_ADDRH   =   0xc3;
 sfr IAP_ADDRL   =   0xc4;
@@ -380,7 +380,7 @@ sfr ISP_CMD     =   0xc5;
 sfr ISP_TRIG    =   0xc6;
 sfr ISP_CONTR   =   0xc7;
 
-//±È½ÏÆ÷ÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//æ¯”è¾ƒå™¨ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr CMPCR1      =   0xe6;
 #define CMPEN       0x80
 #define CMPIF       0x40
@@ -394,7 +394,7 @@ sfr CMPCR2      =   0xe7;
 #define INVCMPO     0x80
 #define DISFLT      0x40
 
-//PCA/PWM ÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//PCA/PWM ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr CCON        =   0xd8;
 sbit CF         =   CCON^7;
 sbit CR         =   CCON^6;
@@ -452,7 +452,7 @@ sfr PCA_PWM1    =   0xf3;
 sfr PCA_PWM2    =   0xf4;
 sfr PCA_PWM3    =   0xf5;
 
-//ÔöÇ¿ĞÍPWM²¨ĞÎ·¢ÉúÆ÷ÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
+//å¢å¼ºå‹PWMæ³¢å½¢å‘ç”Ÿå™¨ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
 sfr PWMCFG      =   0xf1;
 #define CBIF        0x80
 #define ETADC       0x40
@@ -478,8 +478,8 @@ sfr PWMCR       =   0xfe;
 #define ENPWM       0x80
 #define ECBI        0x40
 
-//ÈçÏÂÌØÊâ¹¦ÄÜ¼Ä´æÆ÷Î»ÓÚÀ©Õ¹RAMÇøÓò
-//·ÃÎÊÕâĞ©¼Ä´æÆ÷,ĞèÏÈ½«P_SW2µÄBIT7ÉèÖÃÎª1,²Å¿ÉÕı³£¶ÁĞ´
+//å¦‚ä¸‹ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨ä½äºæ‰©å±•RAMåŒºåŸŸ
+//è®¿é—®è¿™äº›å¯„å­˜å™¨,éœ€å…ˆå°†P_SW2çš„BIT7è®¾ç½®ä¸º1,æ‰å¯æ­£å¸¸è¯»å†™
 #define PWMC        (*(unsigned int  volatile xdata *)0xfff0)
 #define PWMCH       (*(unsigned char volatile xdata *)0xfff0)
 #define PWMCL       (*(unsigned char volatile xdata *)0xfff1)
@@ -552,9 +552,9 @@ sfr PWMCR       =   0xfe;
 #define PWM7CR      (*(unsigned char volatile xdata *)0xff74)
 #define PWM7HLD     (*(unsigned char volatile xdata *)0xff75)
 
-//I2CÌØÊâ¹¦ÄÜ¼Ä´æÆ÷
-//ÈçÏÂÌØÊâ¹¦ÄÜ¼Ä´æÆ÷Î»ÓÚÀ©Õ¹RAMÇøÓò
-//·ÃÎÊÕâĞ©¼Ä´æÆ÷,ĞèÏÈ½«P_SW2µÄBIT7ÉèÖÃÎª1,²Å¿ÉÕı³£¶ÁĞ´
+//I2Cç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨
+//å¦‚ä¸‹ç‰¹æ®ŠåŠŸèƒ½å¯„å­˜å™¨ä½äºæ‰©å±•RAMåŒºåŸŸ
+//è®¿é—®è¿™äº›å¯„å­˜å™¨,éœ€å…ˆå°†P_SW2çš„BIT7è®¾ç½®ä¸º1,æ‰å¯æ­£å¸¸è¯»å†™
 #define I2CCFG      (*(unsigned char volatile xdata *)0xfe80)
 #define ENI2C       0x80
 #define MSSL        0x40
