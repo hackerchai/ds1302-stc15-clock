@@ -20,7 +20,7 @@ uint tempFlag;
 
 
 
-/*   ÑÓ³Ùº¯Êı */
+/*   å»¶è¿Ÿå‡½æ•° */
 void delayMS(uint ms)   //@11.0592MHz
 {
 	uchar y;
@@ -97,24 +97,24 @@ void Delay200us()		//@11.0592MHz
 
 
 
-/*   DS18B20ÎÂ¶È´«¸ĞÆ÷Ä£¿é*/
+/*   DS18B20æ¸©åº¦ä¼ æ„Ÿå™¨æ¨¡å—*/
 
-/**********ds18b20³õÊ¼»¯º¯Êı**********************/
+/**********ds18b20åˆå§‹åŒ–å‡½æ•°**********************/
 
 void DS18B20_Init(void) 
 {
 	uchar x=0;
-	DQ = 1;          //DQ¸´Î»
-	Delay7us(); //ÉÔ×öÑÓÊ±
-	DQ = 0;          //µ¥Æ¬»ú½«DQÀ­µÍ
-	Delay500us(); //¾«È·ÑÓÊ± ´óÓÚ 480us
-	DQ = 1;          //À­¸ß×ÜÏß
-	Delay200us();  //×ã¹»µÄÑÓ³Ù È·±£ÄÜÈÃDS18B20·¢³ö´æÔÚÂö³å
+	DQ = 1;          //DQå¤ä½
+	Delay7us(); //ç¨åšå»¶æ—¶
+	DQ = 0;          //å•ç‰‡æœºå°†DQæ‹‰ä½
+	Delay500us(); //ç²¾ç¡®å»¶æ—¶ å¤§äº 480us
+	DQ = 1;          //æ‹‰é«˜æ€»çº¿
+	Delay200us();  //è¶³å¤Ÿçš„å»¶è¿Ÿ ç¡®ä¿èƒ½è®©DS18B20å‘å‡ºå­˜åœ¨è„‰å†²
 	x=DQ;   
 	Delay200us();
 }
 
-/***********ds18b20¶ÁÒ»¸ö×Ö½Ú**************/
+/***********ds18b20è¯»ä¸€ä¸ªå­—èŠ‚**************/
 
 uchar DS18B20_ReadOneChar(void)
 {
@@ -122,10 +122,10 @@ uchar DS18B20_ReadOneChar(void)
 	uchar dat = 0;
 	for (i=8;i>0;i--)
 	{
-		DQ = 0; // ¸øÂö³åĞÅºÅ
+		DQ = 0; // ç»™è„‰å†²ä¿¡å·
 		Delay1us();
 		dat>>=1;
-		DQ = 1; // ¸øÂö³åĞÅºÅ
+		DQ = 1; // ç»™è„‰å†²ä¿¡å·
 		Delay7us();
 		if(DQ)
 			dat|=0x80;
@@ -134,7 +134,7 @@ uchar DS18B20_ReadOneChar(void)
 	return(dat);
 }
 
-/*************ds18b20Ğ´Ò»¸ö×Ö½Ú****************/
+/*************ds18b20å†™ä¸€ä¸ªå­—èŠ‚****************/
 
 void DS18B20_WriteOneChar(uchar dat)
 {
@@ -151,7 +151,7 @@ void DS18B20_WriteOneChar(uchar dat)
 	}
 }
 
-/**************¶ÁÈ¡ds18b20µ±Ç°ÎÂ¶È************/
+/**************è¯»å–ds18b20å½“å‰æ¸©åº¦************/
 
 uint DS18B20_ReadTemp(void)
 {
@@ -172,8 +172,8 @@ uint DS18B20_ReadTemp(void)
 	DS18B20_WriteOneChar(0xBE);  
 
 
-	a=DS18B20_ReadOneChar();    //¶ÁÈ¡ÎÂ¶ÈÖµµÍÎ»
-	b=DS18B20_ReadOneChar();      //¶ÁÈ¡ÎÂ¶ÈÖµ¸ßÎ»
+	a=DS18B20_ReadOneChar();    //è¯»å–æ¸©åº¦å€¼ä½ä½
+	b=DS18B20_ReadOneChar();      //è¯»å–æ¸©åº¦å€¼é«˜ä½
 	
 
 	readTemp = b<<8;
@@ -185,7 +185,7 @@ uint DS18B20_ReadTemp(void)
 }
 
 
-/*      ´¦Àíº¯ÊıÎÂ¶È*/
+/*      å¤„ç†å‡½æ•°æ¸©åº¦*/
 
 void tempHandle()
 {
@@ -193,7 +193,7 @@ void tempHandle()
 	temp_2 = temp%10;
 }
 
-/*    ÎÂ¶ÈÏÔÊ¾º¯Êı*/
+/*    æ¸©åº¦æ˜¾ç¤ºå‡½æ•°*/
 void tempshow(int shi,int ge)
 {
 	E1 = 0;
@@ -223,7 +223,7 @@ void tempshow(int shi,int ge)
 
 void init()
 {
-	//¹Ø±ÕËùÓĞĞ¡µÆ
+	//å…³é—­æ‰€æœ‰å°ç¯
 	E1=1;
 	E2=1;
 	E3=1;

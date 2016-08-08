@@ -26,7 +26,6 @@
 │   ├── 18B20Test.c                 //DS18B20测试
 │   ├── buttonTest.c                //按钮测试
 │   ├── chartTest.c                 //字模测试
-│   ├── Clock.muo                   //IDE自动生成
 │   ├── Clock.xmp                   //TKStudio项目文件
 │   ├── Debug                       //二进制文件夹
 │   │   ├── 1302BatteryDebug.obj    //DS1302掉电走时调试
@@ -39,7 +38,7 @@
 │   │   ├── Clock.M51
 │   │   ├── lightTest.obj           //LED灯测试
 │   │   ├── main.obj                //最终代码
-│   ├── definecontrol.h
+│   ├── definecontrol.h             //定义引脚以及字模
 │   ├── DS1302.h                    //定义DS1302引脚
 │   ├── lightTest.c                 //LED灯测试
 │   ├── main.c                      //最终代码
