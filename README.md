@@ -1,4 +1,4 @@
-#基于STC芯片的DS1302温度时钟
+#基于STC芯片的DS1302温度LED时钟
 
 ## 结构
   使用STC15W402AS芯片([宏晶科技](http://www.stcmcu.com/)生产)作为主控芯片，利用LED小灯组成的4个“8”作为显示部分，同时使用DS1302([Maxim](https://www.maximintegrated.com)生产)作为系统时钟芯片，使用DS18B20([Maxim](https://www.maximintegrated.com)生产)作为温度传感器芯片。电源使用MicroUSB+5V供电。电路图为自行设计。
@@ -63,14 +63,16 @@
 
   7.如果需要增加修改逻辑代码，可以使用TKStudio打开main-code/Clock.xmp进行二次开发，其他IDE也可。  
 ## 详细教程
-  参见作者博客文章[DS1302温度时钟DIY](https://blog.hackerchai.com/ds1302-ds18b20-stc15-clock/)。
+  参见作者博客文章[DS1302温度LED时钟](https://blog.hackerchai.com/ds1302-ds18b20-stc15-led-clock/)。
 ## 用途
   可作为家用时钟，同时提供了针对STC系列单片机较为成熟的DS1302和DS18B20驱动方案，可以作为院校单片机学习项目。
 ## 关于作者
-主要设计者&代码贡献者：[hackerchai](https://github.com/hackerchai)([柴轶晟](https://hackerchai.com))
+主要设计者&代码贡献者：hackerchai([柴轶晟](https://hackerchai.com)) [hackerchai.com@gmail.com](mailto:hackerchai.com@gmail.com)
 
-参与开发者：[沈冠霖](ssa19990208@foxmail.com) [王荣](2712833492@qq.com)
+参与开发者：沈冠霖 [ssa19990208@foxmail.com](mailto:ssa19990208@foxmail.com)   王荣 [2712833492@qq.com](mailto:2712833492@qq.com)
 
-主要硬件设计：[李沐东](1281579589@qq.com) [沈冠霖](ssa19990208@foxmail.com)
+主要硬件设计：李沐东 [1281579589@qq.com](mailto:1281579589@qq.com) 沈冠霖 [ssa19990208@foxmail.com](mailto:ssa19990208@foxmail.com)
 
-感谢辽宁省沈阳市[东北育才学校](http://www.neyc.cn)高中部 机器人实验室 [龚鹏](13644056236@126.com)老师的指导。
+资料整理：张子誉
+
+感谢辽宁省沈阳市[东北育才学校](http://www.neyc.cn)高中部机器人实验室 龚鹏[13644056236@126.com](mailto:13644056236@126.com)老师的指导。
