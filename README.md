@@ -1,4 +1,4 @@
-#基于STC芯片的DS1302温度LED时钟
+# 基于STC芯片的DS1302温度LED时钟
 
 ## 结构
   使用STC15W402AS芯片([宏晶科技](http://www.stcmcu.com/)生产)作为主控芯片，利用LED小灯组成的4个“8”作为显示部分，同时使用DS1302([Maxim](https://www.maximintegrated.com)生产)作为系统时钟芯片，使用DS18B20([Maxim](https://www.maximintegrated.com)生产)作为温度传感器芯片。电源使用MicroUSB+5V供电。电路图为自行设计。
